@@ -2,26 +2,31 @@
 
 const io = require('socket.io')(3000);
 
-io.on('connection', ( socket ) => {
+io.on('connection', socket => {
+
   console.log('CONNECTED!', socket.id);
 
-  //Setup rooms for students/teacher clients to listen and respond to
-  const room = io.of('/room');
+});
 
-  room.on('connection', (socket) => {
-    console.log('CLASSROOM', socket.id);
+const schoolRoom = io.of('/schoolRoom');
 
-    socket.on('join', room => {
-      console.log('joined', room);
-      socket.join(room);
-    });
-   
-    socket.on('assignment', (payload) => {
-      room.to('teacher').emit('assignment', payload);
-    });
-    socket.on('graded', (payload) => {
-      room.to('student').emit('graded', payload);
-    });
+schoolRoom.on('connection', socket => {
+
+  console.log('School', socket.id);
+
+  socket.on('join', room => {
+    console.log('joined', room);
+    socket.join(room);
   });
+
+
+  socket.on('submission', payload => {
+    schoolRoom.to('instructors').emit('submission', payload);
+  });
+
+  socket.on('graded', payload => {
+    schoolRoom.to('students').emit('graded', payload);
+  });
+
 });
     
