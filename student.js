@@ -2,10 +2,21 @@
 
 const io = require('socket.io-client');
 
-const emergencyChannel = io.connect('http://localhost:3000/emergency');
+const studentRoom = io.connect('http://localhost:3000/room');
 
-emergencyChannel.emit('join', 'policeDepartment');
+studentRoom.emit('join', 'student');
 
-emergencyChannel.on('crime', (payload) => {
-  console.log(payload, ': 911... coming ASAP...!');
-})
+studentRoom.on('graded', (payload) => {
+  console.log(payload, ': graded assignment');
+});
+
+const assignment = (number) => `lab ${number}`;
+
+const submit = () => {
+  let lab = assignment(Math.floor(Math.random() * 100));
+  studentRoom.emit('submit', lab);
+}
+
+
+
+module.exports = submit;

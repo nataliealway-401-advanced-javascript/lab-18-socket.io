@@ -12,14 +12,15 @@ io.on('connection', ( socket ) => {
     console.log('CLASSROOM', socket.id);
 
     socket.on('join', room => {
-      room.emit('joined', room);
+      console.log('joined', room);
+      socket.join(room);
     });
    
     socket.on('assignment', (payload) => {
-      room.to('student').emit('assignment', payload);
+      room.to('teacher').emit('assignment', payload);
     });
     socket.on('graded', (payload) => {
-      room.to('teacher').emit('graded', payload);
+      room.to('student').emit('graded', payload);
     });
   });
 });
