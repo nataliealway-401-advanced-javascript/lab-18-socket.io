@@ -9,9 +9,12 @@ students.on('graded', payload => {
   console.log(payload, 'Graded');
 });
 
-
+/**
+ * @function submit
+ * generates random number to great a lab number, and attaches it to a string
+ */
 const submit = () => {    
-  let number = (Math.floor(Math.random() * 50));
+  let number = (Math.floor(Math.random() * 100));
   students.emit('submission', `Lab ${number}`);
 };
 
