@@ -8,10 +8,10 @@ describe('lab 18 testing', () => {
 });
 
 // describe('app', () => {
-//   it('connect websockets response', (done) => {
+//   it('connect to client response', (done) => {
 //     expect.assertions(1);
 
-//     const ws = new WebSocket(`ws://localhost:${port}`)
+//     const ioConnect = new Connection(`ws://localhost:${port}`)
 //       .on('message', (msg) => {
 //         expect(JSON.parse(msg).id).toEqual(0);
 //         ws.close();
