@@ -5,13 +5,13 @@
 ### Author: Natalie Alway
 
 ### Links and Resources
-* [submission PR](https://github.com/nataliealway-401-advanced-javascript/lab-10/pull/1)
-* [travis](https://www.travis-ci.com/nataliealway-401-advanced-javascript/lab-10)
+* [submission PR](https://github.com/nataliealway-401-advanced-javascript/lab-18-socket.io/pull/1)
+* [travis](https://www.travis-ci.com/nataliealway-401-advanced-javascript/lab-18-socket.io)
 
 
 
 #### Documentation
-* [jsdoc]()
+* [jsdoc](https://github.com/nataliealway-401-advanced-javascript/lab-18-socket.io/blob/lab18/docs/global.html)
 
 ### Setup
 #### `.env` requirements
